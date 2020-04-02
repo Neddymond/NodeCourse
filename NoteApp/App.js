@@ -1,11 +1,49 @@
-//const validator = require("validator");
 const note = require("./Note");
-console.log(note);
-//console.log(validator.isEmail("Neddymond@gmail.com"));
+const validator = require("validator");
 const chalk = require("chalk");
-console.log(chalk.cyan("I am cyan"));
-console.log(chalk.red.blue.green.bold("I'm rich"));
+const yargs = require("yargs");
 
-const parameter = process.argv[2];
+yargs.version("20.0.0");
 
-parameter === "add" ? console.log("Adding notes...") : console.log("removing notes...");
+// Create Add command
+yargs.command({
+    command: "add",
+    describe: "Add a new note",
+    handler: function()
+    {
+        console.log("Adding a new note..");
+    } 
+})
+
+// Create Remove command
+yargs.command({
+    command: "remove",
+    describe: "Removing a new note",
+    handler: function()
+    {
+        console.log("Removing a new note..");
+    } 
+})
+
+// Create a List Command
+yargs.command({
+    command: "list",
+    describe: "List a new note",
+    handler: function()
+    {
+        console.log("Listing a new note..");
+    } 
+})
+
+// Create a Read command
+yargs.command({
+    command: "Read",
+    describe: "Read a new file",
+    handler: function()
+    {
+        console.log("Reading a new file");
+    }
+})
+
+
+console.log(yargs.argv);
