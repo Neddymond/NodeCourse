@@ -9,9 +9,21 @@ yargs.version("20.0.0");
 yargs.command({
     command: "add",
     describe: "Add a new note",
-    handler: function()
+    builder: {
+        title: {
+            describe: "Note Title",
+            demandOption: true,
+            type: "string"
+        },
+        body: {
+            describe: "This is the body to the Note Title",
+            demandOption: true,
+            type: "string"
+        }
+    },
+    handler: function(argv)
     {
-        console.log("Adding a new note..");
+        console.log(`Title: ${argv.title}, Body: ${argv.body}`);
     } 
 })
 
@@ -29,9 +41,9 @@ yargs.command({
 yargs.command({
     command: "list",
     describe: "List a new note",
-    handler: function()
+    handler: function(argv)
     {
-        console.log("Listing a new note..");
+        console.log("Listing a new note..", argv);
     } 
 })
 
@@ -45,5 +57,5 @@ yargs.command({
     }
 })
 
-
-console.log(yargs.argv);
+yargs.parse();
+// console.log(yargs.argv);
