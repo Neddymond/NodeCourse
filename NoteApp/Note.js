@@ -1,4 +1,6 @@
 const fs = require("fs");
+const chalk = require("chalk");
+
 function Note()
 {
     return "Hello";
@@ -51,7 +53,22 @@ const LoadFile = function()
 
 const removeNote = function(title)
 {
-    console.log(title);
+    const notes = LoadFile();
+
+    const returnedNote = notes.filter((note) => 
+    {
+        return note.title !== title;
+    })
+
+    if(notes.length > returnedNote.length)
+    {
+        console.log(chalk.bgGreen("Note Removed"));
+        SaveNotes(returnedNote);
+    }
+    else
+    {
+        console.log(chalk.bgRed("No Note Removed"))
+    }
 }
 
 
