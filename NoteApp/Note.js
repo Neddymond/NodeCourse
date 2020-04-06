@@ -1,20 +1,16 @@
 const fs = require("fs");
 const chalk = require("chalk");
 
-function Note()
-{
-    return "Hello";
+const GetNotes = () => {
+    return "notes..."
 }
 
-
-const addNotes = function(title, body)
+const addNotes = (title, body) =>
 {
     const notes = LoadFile();
     // console.log(dosomn);
 
-    const returnedNote = notes.filter((note) => {
-        return note.title === title;
-    })
+    const returnedNote = notes.filter((note) => note.title === title);
     
     if(returnedNote.length === 0)
     {
@@ -26,11 +22,11 @@ const addNotes = function(title, body)
         )
     
         SaveNotes(notes);
-        console.log("Added a new note");
+        console.log(chalk.green.inverse("Added a new note"));
     }
     else
     {
-        console.log("Unable to add double Titles");
+        console.log(chalk.red.inverse("Unable to add double Titles"));
     }
 }
 
@@ -55,10 +51,7 @@ const removeNote = function(title)
 {
     const notes = LoadFile();
 
-    const returnedNote = notes.filter((note) => 
-    {
-        return note.title !== title;
-    })
+    const returnedNote = notes.filter((note) => note.title !== title);
 
     if(notes.length > returnedNote.length)
     {
@@ -74,6 +67,6 @@ const removeNote = function(title)
 
 module.exports = {
     addNotes: addNotes,
-    Note: Note,
+    getNotes: GetNotes,
     removeNote: removeNote
 }
