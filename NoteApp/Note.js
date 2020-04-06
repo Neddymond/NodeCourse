@@ -47,7 +47,7 @@ const LoadFile = function()
     }
 }
 
-const removeNote = function(title)
+const removeNote = (title) =>
 {
     const notes = LoadFile();
 
@@ -64,9 +64,15 @@ const removeNote = function(title)
     }
 }
 
+const listNote = () => {
+    const notes = LoadFile();
+    notes.forEach((note) => console.log(chalk.cyan(note.title))); 
+}
+
 
 module.exports = {
     addNotes: addNotes,
     getNotes: GetNotes,
-    removeNote: removeNote
+    removeNote: removeNote,
+    listNote: listNote
 }
